@@ -1,4 +1,5 @@
 from peewee import *
+import sqlite3
 
 
 db = SqliteDatabase('catalog.sqlite')
@@ -11,7 +12,7 @@ class Artist(Model):
         databse = db
 
     def __str__(self):
-        return f'{self.id,}, {self.name}, {self.email}'
+        return f'{self.id}, {self.name}, {self.email}'
 
 class Artwork(Model):
     name = CharField()
@@ -48,6 +49,4 @@ def get_all_artwork():
     return artwork_list
 
 
-
-insert_example_data()
 
