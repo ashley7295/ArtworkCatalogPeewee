@@ -9,7 +9,7 @@ class Artist(Model):
     email = CharField()
 
     class Meta:
-        databse = db
+        database = db
 
     def __str__(self):
         return f'{self.id}, {self.name}, {self.email}'
@@ -29,24 +29,19 @@ class Artwork(Model):
 db.connect()
 db.create_tables([Artist, Artwork])
 
+def delete_artwork(artwork):
+    Artwork.delete().where(Artwork.name == artwork).execute()
+
+def modify_availibility(artwork):
+
+    if availibility == True:
+        availibility == False
+    else: availibility == True
+
+    Artwork.update(available=availibility).where(Artwork.name == artwork).execute()
 
 
-artist_1 = Artist(name = 'Susie', email = 'susie@info.com')
-artist_1.save()
-artwork_1 = Artwork(name ='boo', price = 10, available = True, artist = artist_1)
-artwork_1.save()
 
-print(artist_1)
-print(artwork_1)
-
-def get_all_artwork():
-
-    artwork_list = []
-
-    for artwork in Artwork.select():
-        artwork_list.append(artwork)
-
-    return artwork_list
 
 
 
