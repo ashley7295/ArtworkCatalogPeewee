@@ -16,7 +16,7 @@ def get_new_artist():
     return new_artist
 
 #get new artwork input from user
-def get_new_artwork(self):
+def get_new_artwork():
 
     artpiece_name = input('What is the name of the artpiece?: ')
     price = int(input('What is the price of the artpiece?: '))
@@ -36,7 +36,7 @@ def get_new_artwork(self):
     return new_artwork
 
 #get all artwork in the artwork table
-def get_all_artwork(self):
+def get_all_artwork():
 
     art = Artwork.select()
 
@@ -47,7 +47,7 @@ def get_all_artwork(self):
         print('there is no artwork in the catalog')
 
 #get all artists in the artists table
-def get_all_artists(self):
+def get_all_artists():
 
     artists = Artist.select()
 
@@ -58,14 +58,14 @@ def get_all_artists(self):
         print('There are no artists in the catalog')
 
 #get name of artwork to delete
-def delete_artwork(self):
+def delete_artwork():
 
     artwork_to_delete = input('Please enter the name of the artpiece you would like to have deleted: ')
         
     return artwork_to_delete
 
 #get name of artwork to update
-def update_availability(self):
+def update_availability():
     artwork_to_update = input('Please enter the name of the artpice you would like to change the avaiability status for: ')
 
     return artwork_to_update

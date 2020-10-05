@@ -1,5 +1,4 @@
 from peewee import *
-import sqlite3
 
 #setting up the database variable
 db = SqliteDatabase('catalog.sqlite')
