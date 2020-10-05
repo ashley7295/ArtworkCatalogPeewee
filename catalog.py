@@ -28,38 +28,39 @@ class Artwork(Model):
         return f'{self.id}, {self.name}, {self.price}, {self.available}'
 
 #connecting to the database and creating the tables
-
 db.connect()
 db.create_tables([Artist, Artwork])
 
+#delete both tabels
 def delete_catalog():
     Artwork.delete().execute()
     Artist.delete().execute()
     
-
+#counting pieces of art in catalog
 def artwork_count():
     count = Artwork.select()
 
     return count
 
+#counting artists in catalog
 def artist_count():
     count = Artist.select()
 
     return count
 
-    #peewee queries for deleting artwork by the name of the artwork
+#peewee queries for deleting artwork by the name of the artwork
 def delete_artwork(artwork):
     Artwork.delete().where(Artwork.name == artwork).execute()
     print('Your artwork has been deleted. ')
 
-    #peewee querie to search for artwork by an artist
+#peewee querie to search for artwork by an artist
 def artwork_by_artist(artist_name):
 
     rows_modified = Artwork.select().where(Artwork.artist == artist_name)
 
     return rows_modified
             
-        #peewee queries  to search for artwork and modify availibiliy to opposite of what it is currently 
+#peewee queries  to search for artwork and modify availibiliy to opposite of what it is currently 
 def modify_availibility(artwork):
 
     query = Artwork.select().where(Artwork.name == artwork)
@@ -74,6 +75,7 @@ def modify_availibility(artwork):
         else:
             print('Error')
 
+#getting art by name of art
 def get_art_by_name(art_name):
     return Artwork.select().where(Artwork.name == art_name).execute()
     
