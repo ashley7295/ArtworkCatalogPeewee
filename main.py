@@ -2,8 +2,10 @@ from peewee import *
 import ui
 import catalog
 
+#this module is used to call functions from UI(user input) and catalog(database set-up and queries) to preform user selected actions 
 
 
+#main function to call other functions based on the menu selection chosen by the user
 def preform_menu_selection ():
 
     menu = True
@@ -29,9 +31,11 @@ def preform_menu_selection ():
             quit_program()
             menu = False
 
+#program ends and displays a goodbye message
 def quit_program():
     ui.message('Bye!!')
 
+#calls functions to get the artist and search for artwork by that artist. 
 def artists_artwork():
 
     artist = ui.get_artist()
@@ -43,13 +47,15 @@ def artists_artwork():
     else:
         print('This artist does not have any artwork')
 
+#deletes artwork frmo the database from the user inputed name of artist
 def delete_art():
     art = ui.delete_artwork()
     catalog.delete_artwork(art)
 
+#updates the availability of the art bassed on the name of the artpeice 
 def update_availibility():
     art = ui.update_availability()
     catalog.modify_availibility(art)
-    
 
+#calls main function
 preform_menu_selection()
